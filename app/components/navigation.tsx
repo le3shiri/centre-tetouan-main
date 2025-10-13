@@ -278,7 +278,7 @@ export default function Navigation() {
               {/* Header */}
               <div className="flex items-center justify-between mb-8">
                 <div className="flex items-center space-x-3">
-                  <div className="relative w-10 h-10">
+                  <div className="relative">
                     <Image
                       src="/logo-navbar.png"
                       alt="Maison de jeunes Med daoud"
@@ -286,10 +286,7 @@ export default function Navigation() {
                       className="object-contain"
                     />
                   </div>
-                  <div>
-                    <h2 className="text-white font-bold">Dar Chabab</h2>
-                    <p className="text-gray-400 text-xs">Centre de Jeunesse</p>
-                  </div>
+                 
                 </div>
                 <button onClick={() => setIsOpen(false)} className="p-2 text-gray-400 hover:text-white rounded-lg">
                   <X className="w-5 h-5" />
