@@ -187,7 +187,7 @@ export default function Navigation() {
             <Link href="/" className="flex items-center space-x-4">
               <div className="relative w-12 h-12">
                 <Image
-                  src="/logo-nav.png"
+                  src="/logo-navbar.png"
                   alt="Maison de jeunes Med daoud"
                   width={48}
                   height={48}
@@ -280,7 +280,7 @@ export default function Navigation() {
                 <div className="flex items-center space-x-3">
                   <div className="relative w-10 h-10">
                     <Image
-                      src="/logo-nav.png"
+                      src="/logo-navbar.png"
                       alt="Maison de jeunes Med daoud"
                       width={40}
                       height={40}
