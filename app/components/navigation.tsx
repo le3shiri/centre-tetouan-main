@@ -282,8 +282,7 @@ export default function Navigation() {
                     <Image
                       src="/logo-navbar.png"
                       alt="Maison de jeunes Med daoud"
-                      width={40}
-                      height={40}
+                      
                       className="object-contain"
                     />
                   </div>
