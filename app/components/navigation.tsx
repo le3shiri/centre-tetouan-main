@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
@@ -184,8 +185,15 @@ export default function Navigation() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-lg">MJD</span>
+              <div className="relative w-12 h-12">
+                <Image
+                  src="/logo-nav.png"
+                  alt="Maison de jeunes Med daoud"
+                  width={48}
+                  height={48}
+                  className="object-contain"
+                  priority
+                />
               </div>
               <div className="hidden sm:block">
                 <h1 className="text-xl font-bold text-white">Maison de jeunes </h1>
@@ -270,8 +278,14 @@ export default function Navigation() {
               {/* Header */}
               <div className="flex items-center justify-between mb-8">
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold">DC</span>
+                  <div className="relative w-10 h-10">
+                    <Image
+                      src="/logo-nav.png"
+                      alt="Maison de jeunes Med daoud"
+                      width={40}
+                      height={40}
+                      className="object-contain"
+                    />
                   </div>
                   <div>
                     <h2 className="text-white font-bold">Dar Chabab</h2>

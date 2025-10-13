@@ -11,7 +11,10 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Dar Chabab Tetouan - Centre de Jeunesse",
   description: "Centre culturel et éducatif dédié à l'autonomisation des jeunes à Tetouan",
-    generator: 'v0.dev'
+  generator: 'v0.dev',
+  icons: {
+    icon: '/favicon.png',
+  }
 }
 
 export default function RootLayout({
