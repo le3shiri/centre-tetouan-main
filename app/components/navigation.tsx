@@ -185,20 +185,17 @@ export default function Navigation() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-4">
-              <div className="relative w-12 h-12">
+              <div className="relative w-120 h-120">
                 <Image
                   src="/logo-navbar.png"
                   alt="Maison de jeunes Med daoud"
-                  width={48}
-                  height={48}
+                  width={120}
+                  height={50}
                   className="object-contain"
                   priority
                 />
               </div>
-              <div className="hidden sm:block">
-                <h1 className="text-xl font-bold text-white">Maison de jeunes </h1>
-                <p className="text-xs text-gray-400">Med daoud</p>
-              </div>
+             
             </Link>
 
             {/* Desktop Navigation - simplified, no animation */}
@@ -278,11 +275,12 @@ export default function Navigation() {
               {/* Header */}
               <div className="flex items-center justify-between mb-8">
                 <div className="flex items-center space-x-3">
-                  <div className="relative">
+                  <div className="relative w-120 h-120">
                     <Image
                       src="/logo-navbar.png"
                       alt="Maison de jeunes Med daoud"
-                      
+                      width={120}
+                      height={50}
                       className="object-contain"
                     />
                   </div>
