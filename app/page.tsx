@@ -109,18 +109,6 @@ export default function HomePage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-left"
           >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="mb-6"
-            >
-              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-sm rounded-full px-6 py-3 border border-white/10">
-                <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
-                <span className="text-white font-medium text-sm tracking-wide">{t.badge}</span>
-              </div>
-            </motion.div>
-
             <motion.h1
               className="text-5xl lg:text-7xl font-bold text-white mb-8 leading-tight"
               initial={{ opacity: 0, y: 30 }}

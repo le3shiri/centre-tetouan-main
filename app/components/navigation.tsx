@@ -137,7 +137,7 @@ export default function Navigation() {
   return (
     <>
       {/* Top Info Bar */}
-      <div className="fixed top-0 left-0 right-0 z-60 bg-slate-800/90 backdrop-blur-sm border-b border-white/10 text-sm">
+      <div className="fixed top-0 left-0 right-0 z-[100] bg-slate-800/95 backdrop-blur-md border-b border-white/10 text-sm transform-gpu will-change-transform">
         <div className="max-w-7xl mx-auto px-4 py-2">
           <div className="flex items-center justify-between">
             <div className="hidden md:flex items-center space-x-6 text-gray-300">
@@ -177,7 +177,7 @@ export default function Navigation() {
 
       {/* Main Navigation */}
       <nav
-        className={`fixed top-[48px] left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-md shadow-lg border-b border-white/10 ${
+        className={`fixed top-[48px] left-0 right-0 z-[99] bg-slate-900/95 backdrop-blur-md shadow-lg border-b border-white/10 transform-gpu will-change-transform ${
           language === 'ar' ? 'rtl' : 'ltr'
         }`}
       >
@@ -268,7 +268,7 @@ export default function Navigation() {
 
       {/* Mobile Menu - no animation */}
       {isOpen && (
-        <div className="fixed inset-0 z-40 lg:hidden">
+        <div className="fixed inset-0 z-[98] lg:hidden">
           <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setIsOpen(false)} />
           <div className="absolute right-0 top-0 h-full w-80 bg-slate-900/95 backdrop-blur-md shadow-2xl">
             <div className="p-6">
