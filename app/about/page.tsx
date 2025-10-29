@@ -62,12 +62,9 @@ const values = [
 ]
 
 const partners = [
-  "Ministère de la Jeunesse",
-  "Région Tetouan",
-  "Commune de Tetouan",
-  "UNESCO",
-  "Fondation Mohammed V",
-  "Association des Centres de Jeunesse",
+  { name: "AECID", logo: "/aecid.png" },
+  { name: "MJS", logo: "/MJS.png" },
+  { name: "Tadamon", logo: "/Tadamon.png" },
 ]
 
 import { useLanguage } from '../context/LanguageContext';
@@ -273,19 +270,23 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20"
+            className="bg-white/10 backdrop-blur-md rounded-3xl p-12 border border-white/20"
           >
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-              {t.partners.list.map((partner: string, index: number) => (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {partners.map((partner, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="flex items-center justify-center p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300"
+                  className="flex items-center justify-center p-6 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300"
                 >
-                  <span className="text-white font-medium text-center">{partner}</span>
+                  <img 
+                    src={partner.logo} 
+                    alt={partner.name}
+                    className="w-full h-auto max-h-24 object-contain"
+                  />
                 </motion.div>
               ))}
             </div>
