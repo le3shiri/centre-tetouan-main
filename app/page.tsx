@@ -307,7 +307,7 @@ export default function HomePage() {
               <div className="relative w-full" style={{ paddingBottom: '75%' }}>
                 <iframe
                   className="absolute top-0 left-0 w-full h-full rounded-2xl"
-                  src="https://my.matterport.com/show/?m=oyaicKWaEQw&play=1&tour=3&ts=3&hl=0&pin=0&back=1"
+                  src="https://my.matterport.com/show/?m=jMsvTxnegur"
                   frameBorder="0"
                   allowFullScreen
                   allow="autoplay; fullscreen; web-share; xr-spatial-tracking;"
