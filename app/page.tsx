@@ -88,7 +88,7 @@ export default function HomePage() {
 
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 pt-40">
+<section className="relative min-h-screen flex items-center justify-center px-4 py-20">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
 
         {/* Professional background pattern */}
@@ -243,8 +243,84 @@ export default function HomePage() {
         </motion.div>
       </section>
 
+      {/* Matterport Virtual Tour Section */}
+      <motion.section
+        className="py-20 px-4 relative z-10"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content - Text */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-white">
+                Visitez Notre{" "}
+                <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                  Centre en 3D
+                </span>
+              </h2>
+              <p className="text-xl text-gray-300 leading-relaxed">
+                Découvrez notre centre en visite virtuelle immersive. Explorez chaque espace en 3D et vivez une expérience unique.
+              </p>
+
+              {/* Features List */}
+              <div className="grid grid-cols-2 gap-4 pt-4">
+                {[
+                  "Visite 3D immersive",
+                  "Navigation intuitive",
+                  "Haute définition",
+                  "Compatible VR",
+                  "Mesures précises",
+                  "Mode plan 3D"
+                ].map((feature, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="flex items-center space-x-2"
+                  >
+                    <div className="w-2 h-2 bg-gradient-to-r from-purple-400 to-cyan-400 rounded-full" />
+                    <span className="text-gray-300 text-sm">{feature}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Right Content - Matterport */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/20 bg-white/5 backdrop-blur-sm p-4"
+            >
+              <div className="relative w-full" style={{ paddingBottom: '75%' }}>
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full rounded-2xl"
+                  src="https://my.matterport.com/show/?m=oyaicKWaEQw&play=1&tour=3&ts=3&hl=0&pin=0&back=1"
+                  frameBorder="0"
+                  allowFullScreen
+                  allow="autoplay; fullscreen; web-share; xr-spatial-tracking;"
+                  title="Visite Virtuelle du Centre"
+                />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
       {/* Services Section */}
-      <motion.section className="py-20 px-4 relative z-10" style={{ y: y2 }}>
+      <motion.section className="py-32 px-4 relative z-10">
         <div className="max-w-7xl mx-auto">
           <motion.div
             className="text-center mb-16"
@@ -254,7 +330,7 @@ export default function HomePage() {
             viewport={{ once: true }}
           >
             <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
-              {t.services.title}{" "}
+              {t.services.title.split(' ')[0]}{" "}
               <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
                 {t.services.title.split(' ')[1]}
               </span>
