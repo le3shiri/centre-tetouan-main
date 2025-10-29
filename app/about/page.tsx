@@ -7,32 +7,32 @@ import { Target, Eye, Heart, Users, Award, Lightbulb } from "lucide-react"
 import PageHero from "../components/page-hero"
 
 
-const teamMembers = [
-  {
-    name: "Ahmed Benali",
-    role: "Directeur du Centre",
-    image: "/placeholder.svg?height=300&width=300",
-    description: "Passionné par l'éducation des jeunes depuis plus de 10 ans",
-  },
-  {
-    name: "Fatima Zahra",
-    role: "Coordinatrice Pédagogique",
-    image: "/placeholder.svg?height=300&width=300",
-    description: "Experte en développement de programmes éducatifs innovants",
-  },
-  {
-    name: "Youssef Alami",
-    role: "Animateur Multimédia",
-    image: "/placeholder.svg?height=300&width=300",
-    description: "Spécialiste en technologies créatives et production audiovisuelle",
-  },
-  {
-    name: "Aicha Mansouri",
-    role: "Responsable Théâtre",
-    image: "/placeholder.svg?height=300&width=300",
-    description: "Comédienne professionnelle et formatrice en arts dramatiques",
-  },
-]
+// const teamMembers = [
+//   {
+//     name: "Ahmed Benali",
+//     role: "Directeur du Centre",
+//     image: "/placeholder.svg?height=300&width=300",
+//     description: "Passionné par l'éducation des jeunes depuis plus de 10 ans",
+//   },
+//   {
+//     name: "Fatima Zahra",
+//     role: "Coordinatrice Pédagogique",
+//     image: "/placeholder.svg?height=300&width=300",
+//     description: "Experte en développement de programmes éducatifs innovants",
+//   },
+//   {
+//     name: "Youssef Alami",
+//     role: "Animateur Multimédia",
+//     image: "/placeholder.svg?height=300&width=300",
+//     description: "Spécialiste en technologies créatives et production audiovisuelle",
+//   },
+//   {
+//     name: "Aicha Mansouri",
+//     role: "Responsable Théâtre",
+//     image: "/placeholder.svg?height=300&width=300",
+//     description: "Comédienne professionnelle et formatrice en arts dramatiques",
+//   },
+// ]
 
 const values = [
   {
@@ -198,7 +198,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 px-4">
+      {/* <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -247,7 +247,7 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Partners Section */}
       <section className="py-20 px-4">

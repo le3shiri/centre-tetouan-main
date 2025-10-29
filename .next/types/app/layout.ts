@@ -1,4 +1,4 @@
-// File: C:\Users\aymen\OneDrive\Desktop\PAID PROJECTS\centre-tetouan-main\centre-tetouan-main\app\layout.tsx
+// File: C:\Users\HUAWEI\Desktop\centre-tetouan-main\app\layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
