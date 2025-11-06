@@ -48,6 +48,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Error appending to sheet:', error);
-    return NextResponse.json({ success: false, message: 'Failed to save data' }, { status: 500 });
+    return NextResponse.json({ 
+      success: false, 
+      message: 'Failed to save data', 
+      error: error instanceof Error ? error.message : 'Unknown error'
+    }, { status: 500 });
   }
 }
