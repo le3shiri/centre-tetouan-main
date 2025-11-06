@@ -11,3 +11,8 @@ build/
 
 # Env
 .env
+node_modules/
+.env
+dist/
+.DS_Store
+vendor/
