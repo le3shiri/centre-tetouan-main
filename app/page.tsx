@@ -18,6 +18,7 @@ import {
   Award,
 } from "lucide-react"
 import Link from "next/link"
+import HeroCarousel from "./components/hero-carousel"
 
 
 const iconMap = [Gamepad2, Monitor, Camera, FileText, Theater, Mic];
@@ -49,7 +50,7 @@ export default function HomePage() {
     return () => window.removeEventListener("mousemove", handleMouseMove)
   }, [])
 
-    const services = t.services.items.map((item: { title: string; description: string }, idx: number) => ({
+  const services = t.services.items.map((item: { title: string; description: string }, idx: number) => ({
     ...item,
     icon: iconMap[idx],
     color: colorMap[idx],
@@ -88,160 +89,7 @@ export default function HomePage() {
 
 
       {/* Hero Section */}
-<section className="relative min-h-screen flex items-center justify-center px-4 py-20">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
-
-        {/* Professional background pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fillRule='evenodd'%3E%3Cg fill='%23ffffff' fillOpacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            }}
-          />
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-left"
-          >
-            <motion.h1
-              className="text-5xl lg:text-7xl font-bold text-white mb-8 leading-tight"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-            >
-              {t.hero.title}
-              <br />
-              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
-                {t.hero.subtitle}
-              </span>
-            </motion.h1>
-
-            <motion.p
-              className="text-xl text-gray-300 mb-8 leading-relaxed max-w-2xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-            >
-              {t.hero.description}
-            </motion.p>
-
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4 mb-12"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1 }}
-            >
-              <Link href="/activites">
-                <Button
-                  size="lg"
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
-                >
-                  {t.cta.discover}
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </Link>
-
-              <Link href="/contact">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="border-2 border-white/20 text-white hover:bg-white/10 px-8 py-4 text-lg rounded-lg backdrop-blur-sm transition-all duration-300 hover:border-white/40 bg-transparent"
-                >
-                  {t.cta.contact}
-                </Button>
-              </Link>
-            </motion.div>
-
-            {/* Key Stats */}
-            <motion.div
-              className="grid grid-cols-3 gap-8"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.2 }}
-            >
-              {[
-                { number: "500+", label: t.stats.trained },
-                { number: "15+", label: t.stats.programs },
-                { number: "5", label: t.stats.experience },
-              ].map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-2xl font-bold text-white mb-1">{stat.number}</div>
-                  <div className="text-sm text-gray-400">{stat.label}</div>
-                </div>
-              ))}
-            </motion.div>
-          </motion.div>
-
-          {/* Right Content - Professional Image */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative"
-          >
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-purple-600/20 rounded-2xl transform rotate-3" />
-              <div className="relative bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-                <img
-                  src="/hero.jpg"
-                  alt="Centre Dar Chabab Tetouan - Hero Image"
-                  className="w-full h-96 object-cover rounded-xl"
-                />
-
-                {/* Floating Cards */}
-                <motion.div
-                  className="absolute -top-4 -left-4 bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-xl"
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
-                      <Users className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <div className="text-sm font-semibold text-gray-900">Communauté Active</div>
-                      <div className="text-xs text-gray-600">500+ membres</div>
-                    </div>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  className="absolute -bottom-4 -right-4 bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-xl"
-                  animate={{ y: [0, 10, 0] }}
-                  transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, delay: 1.5 }}
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center">
-                      <Award className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <div className="text-sm font-semibold text-gray-900">Excellence</div>
-                      <div className="text-xs text-gray-600">Certifié qualité</div>
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
-        >
-          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white/60 rounded-full mt-2" />
-          </div>
-        </motion.div>
-      </section>
+      <HeroCarousel />
 
       {/* Matterport Virtual Tour Section */}
       <motion.section

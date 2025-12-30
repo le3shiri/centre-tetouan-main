@@ -122,7 +122,7 @@ export default function AboutPage() {
                   <ul className="space-y-4 text-gray-300">
                     {t.mission.list.map((item: string, idx: number) => (
                       <li key={idx} className="flex items-start space-x-3">
-                        <div className={`w-2 h-2 rounded-full mt-2 flex-shrink-0 ${["bg-purple-400","bg-pink-400","bg-cyan-400"][idx % 3]}`} />
+                        <div className={`w-2 h-2 rounded-full mt-2 flex-shrink-0 ${["bg-purple-400", "bg-pink-400", "bg-cyan-400"][idx % 3]}`} />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -282,8 +282,8 @@ export default function AboutPage() {
                   viewport={{ once: true }}
                   className="flex items-center justify-center p-6 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300"
                 >
-                  <img 
-                    src={partner.logo} 
+                  <img
+                    src={partner.logo}
                     alt={partner.name}
                     className="w-full h-auto max-h-24 object-contain"
                   />
