@@ -3,18 +3,42 @@
         "id": 1,
         "image": "/hero.jpg",
         "title": "Excellence in Education",
-        "description": "Providing top-tier vocational training and education for the future leaders of tomorrow."
+        "description": "Providing top-tier vocational training and education for the future leaders of tomorrow.",
+        "content": "Our commitment to excellence in education drives everything we do. We offer a comprehensive curriculum designed to equip students with the skills and knowledge they need to succeed in their chosen careers. From hands-on vocational training to theoretical foundations, our programs are tailored to meet the demands of the modern workforce. Students benefit from small class sizes, personalized attention, and a supportive learning environment that fosters growth and innovation.",
+        "date": "2024-03-15",
+        "location": "Main Campus",
+        "gallery": [
+            "/hero.jpg",
+            "/hero.jpg",
+            "/hero.jpg"
+        ]
     },
     {
         "id": 2,
         "image": "/hero.jpg",
         "title": "Modern Facilities",
-        "description": "State-of-the-art laboratories and classrooms designed to enhance the learning experience."
+        "description": "State-of-the-art laboratories and classrooms designed to enhance the learning experience.",
+        "content": "Experience learning in a cutting-edge environment with our modern facilities. Our campus boasts state-of-the-art laboratories, fully equipped computer centers, and spacious classrooms designed to facilitate interactive and engaging learning. We believe that a conducive environment is key to academic success, which is why we continually invest in upgrading our infrastructure to provide the best possible resources for our students.",
+        "date": "2024-03-20",
+        "location": "Science Wing",
+        "gallery": [
+            "/hero.jpg",
+            "/hero.jpg",
+            "/hero.jpg",
+            "/hero.jpg"
+        ]
     },
     {
         "id": 3,
         "image": "/hero.jpg",
         "title": "Expert Faculty",
-        "description": "Learn from industry professionals and experienced educators dedicated to your success."
+        "description": "Learn from industry professionals and experienced educators dedicated to your success.",
+        "content": "Our faculty members are not just teachers; they are mentors and industry leaders. With years of experience in their respective fields, they bring real-world insights into the classroom, bridging the gap between theory and practice. They are dedicated to your success, providing guidance, support, and inspiration every step of the way. Join us and learn from the best to become the best.",
+        "date": "2024-03-25",
+        "location": "Faculty Building",
+        "gallery": [
+            "/hero.jpg",
+            "/hero.jpg"
+        ]
     }
 ]

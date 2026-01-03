@@ -5,6 +5,7 @@ import useEmblaCarousel from "embla-carousel-react"
 import { motion, AnimatePresence } from "framer-motion"
 import carouselData from "../data/hero-carousel.json"
 import { ChevronRight, ChevronLeft } from "lucide-react"
+import Link from "next/link"
 
 export default function HeroCarousel() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 30 })
@@ -82,6 +83,14 @@ export default function HeroCarousel() {
                       <p className="text-sm md:text-lg text-gray-200 max-w-2xl mb-4 md:mb-6 line-clamp-2">
                         {slide.description}
                       </p>
+
+                      <Link
+                        href={`/activites/${slide.id}`}
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-full backdrop-blur-sm border border-white/20 transition-all hover:scale-105"
+                      >
+                        Read More
+                        <ChevronRight className="w-4 h-4" />
+                      </Link>
 
                     </motion.div>
                   </div>

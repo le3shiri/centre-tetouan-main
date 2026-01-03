@@ -1,8 +1,8 @@
-// File: C:\prj\centre-tetouan-main\app\contact\page.tsx
-import * as entry from '../../../../app/contact/page.js'
+// File: C:\Users\HUAWEI\Desktop\mdj\centre-tetouan-main\app\activites\[id]\page.tsx
+import * as entry from '../../../../../app/activites/[id]/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
-type TEntry = typeof import('../../../../app/contact/page.js')
+type TEntry = typeof import('../../../../../app/activites/[id]/page.js')
 
 // Check that the entry is a valid entry
 checkFields<Diff<{
