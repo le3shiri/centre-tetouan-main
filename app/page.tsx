@@ -19,7 +19,9 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 import HeroCarousel from "./components/hero-carousel"
-
+import AnimatedBackground from "./components/animated-background"
+import { useLanguage } from './context/LanguageContext';
+import { home as homeTranslations } from './translations/home';
 
 const iconMap = [Gamepad2, Monitor, Camera, FileText, Theater, Mic];
 const colorMap = [
@@ -31,24 +33,9 @@ const colorMap = [
   "from-pink-500 to-rose-500",
 ];
 
-import { useLanguage } from './context/LanguageContext';
-import { home as homeTranslations } from './translations/home';
-
 export default function HomePage() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const { language } = useLanguage();
   const t = homeTranslations[language] || homeTranslations['fr'];
-  const { scrollY } = useScroll()
-  const y1 = useTransform(scrollY, [0, 300], [0, -50])
-  const y2 = useTransform(scrollY, [0, 300], [0, -100])
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
-    }
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
-  }, [])
 
   const services = t.services.items.map((item: { title: string; description: string }, idx: number) => ({
     ...item,
@@ -58,35 +45,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-slate-900 overflow-hidden">
-      {/* Animated background elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-70"
-          animate={{
-            x: mousePosition.x * 0.02,
-            y: mousePosition.y * 0.02,
-          }}
-          transition={{ type: "spring", stiffness: 50, damping: 20 }}
-        />
-        <motion.div
-          className="absolute -bottom-40 -left-40 w-80 h-80 bg-cyan-500 rounded-full mix-blend-multiply filter blur-xl opacity-70"
-          animate={{
-            x: mousePosition.x * -0.02,
-            y: mousePosition.y * -0.02,
-          }}
-          transition={{ type: "spring", stiffness: 50, damping: 20 }}
-        />
-        <motion.div
-          className="absolute top-40 left-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-70"
-          animate={{
-            x: mousePosition.x * 0.01,
-            y: mousePosition.y * 0.01,
-          }}
-          transition={{ type: "spring", stiffness: 50, damping: 20 }}
-        />
-      </div>
-
-
+      <AnimatedBackground />
 
       {/* Hero Section */}
       <HeroCarousel />
@@ -160,6 +119,7 @@ export default function HomePage() {
                   allowFullScreen
                   allow="autoplay; fullscreen; web-share; xr-spatial-tracking;"
                   title="Visite Virtuelle du Centre"
+                  loading="lazy"
                 />
               </div>
             </motion.div>

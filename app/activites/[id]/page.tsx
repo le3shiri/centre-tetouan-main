@@ -29,7 +29,7 @@ export default function ActivityDetailPage({ params }: PageProps) {
             <div className="relative h-[400px] w-full overflow-hidden">
                 <div
                     className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: `url(${item.image})` }}
+                    style={{ backgroundImage: `url("${item.image}")` }}
                 >
                     <div className="absolute inset-0 bg-slate-900/70" />
                 </div>

@@ -1,4 +1,4 @@
-// File: C:\Users\HUAWEI\Desktop\mdj\centre-tetouan-main\app\activites\[id]\page.tsx
+// File: C:\projects\mdj\centre-tetouan-main\app\activites\[id]\page.tsx
 import * as entry from '../../../../../app/activites/[id]/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

@@ -6,9 +6,15 @@ import { motion, AnimatePresence } from "framer-motion"
 import carouselData from "../data/hero-carousel.json"
 import { ChevronRight, ChevronLeft } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function HeroCarousel() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 30 })
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    duration: 30,
+    skipSnaps: false,
+    dragFree: false
+  })
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([])
 
@@ -30,69 +36,99 @@ export default function HeroCarousel() {
     setSelectedIndex(emblaApi.selectedScrollSnap())
   }, [emblaApi])
 
+  // Robust Autoplay logic
+  const autoplayRef = React.useRef<NodeJS.Timeout | null>(null)
+
+  const stopAutoplay = useCallback(() => {
+    if (autoplayRef.current) {
+      clearInterval(autoplayRef.current)
+      autoplayRef.current = null
+    }
+  }, [])
+
+  const startAutoplay = useCallback(() => {
+    stopAutoplay()
+    autoplayRef.current = setInterval(() => {
+      if (emblaApi) emblaApi.scrollNext()
+    }, 5000)
+  }, [emblaApi, stopAutoplay])
+
   useEffect(() => {
     if (!emblaApi) return
+
     onSelect()
     setScrollSnaps(emblaApi.scrollSnapList())
-    emblaApi.on("select", onSelect)
+
+    emblaApi.on("select", () => {
+      onSelect()
+      startAutoplay() // Reset timer on every select (manual or auto)
+    })
+
     emblaApi.on("reInit", onSelect)
-  }, [emblaApi, onSelect])
+    emblaApi.on("pointerDown", stopAutoplay)
 
-  // Autoplay
-  useEffect(() => {
-    if (!emblaApi) return
-    const intervalId = setInterval(() => {
-      emblaApi.scrollNext()
-    }, 3000)
+    startAutoplay()
 
-    return () => clearInterval(intervalId)
-  }, [emblaApi])
+    return () => stopAutoplay()
+  }, [emblaApi, onSelect, startAutoplay, stopAutoplay])
 
   return (
     <section className="relative pt-32 pb-20 px-4 overflow-hidden min-h-[400px] md:min-h-[600px] flex items-center justify-center bg-slate-950">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950" />
-      <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/40 via-slate-900/0 to-slate-900/0" />
+      {/* Background Elements - Simple and fast */}
+      <div className="absolute inset-0 bg-slate-900" />
+      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/40 via-transparent to-transparent" />
 
-      {/* Carousel Container - Full Width on Mobile, 75% on Desktop */}
-      <div className="relative w-full md:w-[75%] max-w-7xl z-10 group">
-        <div className="overflow-hidden" ref={emblaRef}>
+      {/* Carousel Container */}
+      <div className="relative w-full md:w-[85%] max-w-7xl z-10">
+        <div className="overflow-hidden rounded-2xl shadow-2xl border border-white/5" ref={emblaRef}>
           <div className="flex touch-pan-y">
             {carouselData.map((slide, index) => (
-              <div className="flex-[0_0_100%] min-w-0 relative" key={slide.id}>
-                <div className="relative h-[250px] md:h-[500px] w-full rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-                  {/* Image */}
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105"
-                    style={{ backgroundImage: `url(${slide.image})` }}
+              <div
+                className="flex-[0_0_100%] min-w-0 relative h-[350px] md:h-[580px]"
+                key={slide.id}
+              >
+                {/* Image Container */}
+                <div className="relative w-full h-full">
+                  <Image
+                    src={slide.image}
+                    alt={slide.title}
+                    fill
+                    className="object-cover"
+                    priority={index === 0}
+                    sizes="(max-width: 768px) 100vw, 85vw"
+                    quality={60} // Lower quality for better performance
                   />
 
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/20 to-transparent" />
 
-                  {/* Content */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12 text-left">
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: selectedIndex === index ? 1 : 0, y: selectedIndex === index ? 0 : 20 }}
-                      transition={{ duration: 0.5, delay: 0.2 }}
-                    >
-                      <h2 className="text-2xl md:text-5xl font-bold text-white mb-2 md:mb-4 tracking-tight">
-                        {slide.title}
-                      </h2>
-                      <p className="text-sm md:text-lg text-gray-200 max-w-2xl mb-4 md:mb-6 line-clamp-2">
-                        {slide.description}
-                      </p>
+                  {/* Content - Optimized transitions */}
+                  <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-16">
+                    <AnimatePresence>
+                      {selectedIndex === index && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 15 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -15 }}
+                          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                        >
+                          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight drop-shadow-md">
+                            {slide.title}
+                          </h2>
+                          <p className="text-sm md:text-lg text-gray-200 max-w-2xl mb-8 line-clamp-2 drop-shadow-sm">
+                            {slide.description}
+                          </p>
 
-                      <Link
-                        href={`/activites/${slide.id}`}
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-full backdrop-blur-sm border border-white/20 transition-all hover:scale-105"
-                      >
-                        Read More
-                        <ChevronRight className="w-4 h-4" />
-                      </Link>
-
-                    </motion.div>
+                          <Link
+                            href={`/activites/${slide.id}`}
+                            className="inline-flex items-center gap-3 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition-all active:scale-95 shadow-xl shadow-blue-900/30"
+                          >
+                            Read More
+                            <ChevronRight className="w-5 h-5" />
+                          </Link>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 </div>
               </div>
