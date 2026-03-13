@@ -118,7 +118,7 @@ const socialLinks = [
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   // scroll state no longer needed
-  
+
   const [searchOpen, setSearchOpen] = useState(false)
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
   const pathname = usePathname()
@@ -177,9 +177,8 @@ export default function Navigation() {
 
       {/* Main Navigation */}
       <nav
-        className={`fixed top-[48px] left-0 right-0 z-[99] bg-slate-900/95 backdrop-blur-md shadow-lg border-b border-white/10 transform-gpu will-change-transform ${
-          language === 'ar' ? 'rtl' : 'ltr'
-        }`}
+        className={`fixed top-[48px] left-0 right-0 z-[99] bg-slate-900/95 backdrop-blur-md shadow-lg border-b border-white/10 transform-gpu will-change-transform ${language === 'ar' ? 'rtl' : 'ltr'
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-20">
@@ -195,7 +194,7 @@ export default function Navigation() {
                   priority
                 />
               </div>
-             
+
             </Link>
 
             {/* Desktop Navigation - simplified, no animation */}
@@ -207,11 +206,10 @@ export default function Navigation() {
                 >
                   <Link
                     href={item.href}
-                    className={`flex items-center space-x-2 px-4 py-3 rounded-xl transition-all duration-200 ${
-                      pathname === item.href
+                    className={`flex items-center space-x-2 px-4 py-3 rounded-xl transition-all duration-200 ${pathname === item.href
                         ? "bg-white/10 text-white"
                         : "text-gray-300 hover:text-white hover:bg-white/5"
-                    }`}
+                      }`}
                   >
                     <item.icon className="w-4 h-4" />
                     <span className="font-medium">{item.name}</span>
@@ -284,7 +282,7 @@ export default function Navigation() {
                       className="object-contain"
                     />
                   </div>
-                 
+
                 </div>
                 <button onClick={() => setIsOpen(false)} className="p-2 text-gray-400 hover:text-white rounded-lg">
                   <X className="w-5 h-5" />
@@ -297,11 +295,10 @@ export default function Navigation() {
                     key={item.name}
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className={`flex items-center space-x-3 p-3 rounded-xl transition-all duration-200 ${
-                      pathname === item.href
+                    className={`flex items-center space-x-3 p-3 rounded-xl transition-all duration-200 ${pathname === item.href
                         ? "bg-white/10 text-white"
                         : "text-gray-300 hover:text-white hover:bg-white/5"
-                    }`}
+                      }`}
                   >
                     <item.icon className="w-5 h-5" />
                     <div>
